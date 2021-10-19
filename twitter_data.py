@@ -17,7 +17,7 @@ auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 print("Authenticated")
 
-api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 userID_list = ['sundarpichai']
 # userID_list = ["sundarpichai", 'elonmusk', 'finkd', 'JeffBezos', 'BillGates', ]
 if not os.path.isdir('output'):
@@ -31,7 +31,7 @@ end = datetime.datetime.strptime(endDate, "%Y-%m-%d")
 # if start <= TODAY_CHECK <= end:
 for user in userID_list:
     tweets_list = []
-    user_info = api.get_user(user)
+    user_info = api.get_user(screen_name=user)
     name = user_info.name
     print(name)
     description = user_info.description
